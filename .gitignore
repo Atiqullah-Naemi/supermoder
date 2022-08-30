@@ -8,3 +8,5 @@
 ehthumbs.db
 Thumbs.db
 .vscode
+src/node_modules
+src/package-lock.json
