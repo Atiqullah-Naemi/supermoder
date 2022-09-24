@@ -1,0 +1,12 @@
+@import "./utils/color.scss";
+@import "./utils/header.scss";
+
+html {
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.cart-count-bubble {
+  background: $dark_green;
+  color: $white;
+}

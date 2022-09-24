@@ -1,0 +1,38 @@
+.header-container {
+  width: 100%;
+  .uk-navbar-left {
+    width: 100%;
+  }
+}
+.header-top {
+  width: 100%;
+  display: grid;
+  grid-template-areas: "header-top-logo header-top-menu header-top-icons";
+  grid-template-columns: 1fr 2fr 1fr;
+  .header-top__logo {
+    align-self: flex-start;
+    grid-area: header-top-logo;
+  }
+  .header-top__menu {
+    grid-area: header-top-menu;
+  }
+  .header-top__icons {
+    grid-area: header-top-icons;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-areas: "header-top-menu header-top-logo header-top-icons";
+  }
+  // submenu
+  .nav__item {
+    &:hover {
+      .nav__item-submenu {
+        display: block;
+      }
+    }
+
+    .nav__item-submenu {
+      display: none;
+    }
+  }
+}
