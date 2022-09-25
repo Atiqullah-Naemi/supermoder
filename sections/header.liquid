@@ -10,29 +10,46 @@
           {% endif %}
         </a>
         <ul class="uk-navbar-nav">
-          <li class="uk-active">
-            <a href="#">Active</a>
-          </li>
-          <li>
-            <a href="#">Parent</a>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-active">
-                  <a href="#">Active</a>
-                </li>
-                <li>
-                  <a href="#">Item</a>
-                </li>
-                <li>
-                  <a href="#">Item</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a href="#">Item</a>
-          </li>
+          {% for link in section.settings.menu.links %}
+            {% if link.links != blank %}
+              <li {% if link.active %} class="uk-active" {% endif %}>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+                <div class="uk-navbar-dropdown">
+                  <ul class="uk-nav uk-navbar-dropdown-nav">
+                    {% for sublink in linklists[link.handle].links %}
+                      <li>
+                        <a href="{{ sublink.url }}">
+                          {{ sublink.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </li>
+            {% else %}
+              <li {% if link.active %} class="uk-active" {% endif %}>
+                <a href="{{ link.url }}">
+                  {{ link.title }}</a>
+              </li>
+
+            {% endif %}
+          {% endfor %}
+
         </ul>
+        <div class="header-top__icons">
+          <span class="header-top__icon" uk-icon="search"></span>
+          {%- if shop.customer_accounts_enabled -%}
+            <a href="{{ routes.account_url }}" title="account link" class="header-top__link">
+              <span class="header-top__icon" uk-icon="user"></span>
+            </a>
+          {% endif %}
+          <span class="header-top__icon" uk-icon="bag">
+            <span class="cart-count-bubble" x-text="cart_count">
+              {{ cart.item_count }}
+            </span>
+          </span>
+
+        </div>
       </div>
 
     </div>
@@ -43,26 +60,26 @@
 <script type="application/ld+json">
 
 [36mLine: 1[0m
-[31m[36 mLine : 2 [[0m
+[31m[36 mLine : 1 [[0m
 [31m        0 m [[0m
-[31m            31 m(empty line)[[0m
-[31m                0 m [[0m
-[31m                    31 m[[0m
-[31m                        36 mLine : 1 [[0m
-[31m                            0 m[[0m
+[31m            31 m[[0m
+[31m                36 mLine : 2 [[0m
+[31m                    [[0m
+[31m                        0 m [[0m
+[31m                            31 m 0 m [[0m
 </script>
 
 {%- if request.page_type == 'index' -%}
   {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %} <script type="application/ld+json">
 
 [36mLine: 1[0m
-[31m[36 mLine : 2 [[0m
+[31m[36 mLine : 1 [[0m
 [31m        0 m [[0m
-[31m            31 m(empty line)[[0m
-[31m                0 m [[0m
-[31m                    31 m[[0m
-[31m                        36 mLine : 1 [[0m
-[31m                            0 m[[0m
+[31m            31 m[[0m
+[31m                36 mLine : 2 [[0m
+[31m                    [[0m
+[31m                        0 m [[0m
+[31m                            31 m 0 m [[0m
 </script>
 {%- endif -%}
 

@@ -9,4 +9,11 @@ html {
 .cart-count-bubble {
   background: $dark_green;
   color: $white;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+.hover-element {
+  transition: all 0.3s ease-in-out;
 }

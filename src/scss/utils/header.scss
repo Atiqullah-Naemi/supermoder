@@ -9,15 +9,27 @@
   display: grid;
   grid-template-areas: "header-top-logo header-top-menu header-top-icons";
   grid-template-columns: 1fr 2fr 1fr;
-  .header-top__logo {
-    align-self: flex-start;
+  align-items: center;
+  &__logo {
+    justify-self: flex-start;
     grid-area: header-top-logo;
   }
-  .header-top__menu {
+  &__menu {
     grid-area: header-top-menu;
   }
-  .header-top__icons {
+  &__icons {
+    justify-self: flex-end;
     grid-area: header-top-icons;
+  }
+  &__icon {
+    position: relative;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  &__link {
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   @media (max-width: 768px) {
